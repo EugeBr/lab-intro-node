@@ -12,15 +12,46 @@ class SortedList {
     this.length ++
   }
 
-  get(pos) {}
+  get(pos) {
+    if(!this.items[pos]) {
+      throw new Error('OutOfBounds');
+    }
+    return this.items[pos];
+  }
 
-  max() {}
+  max() {
+    if(!this.length) {
+      throw new Error('EmptySortedList');
+    }
+    return Math.max(...this.items);
+  }
 
-  min() {}
+  min() {
+    if(!this.length) {
+      throw new Error('EmptySortedList');
+    }
+    return Math.min(...this.items);
+  }
 
-  sum() {}
+  sum() {
+    if(!this.length) {
+      return 0;
+    }
+    const sumItems = this.items.reduce((acc, val) => {
+      return acc + val;
+    }, 0);
+    return sumItems;
+  }
 
-  avg() {}
+  avg() {
+    if(!this.length) {
+      throw new Error('EmptySortedList');
+    }
+    const sumItems = this.items.reduce((acc, val) => {
+      return acc + val;
+    }, 0);
+    return sumItems / this.length;
+  } //*tried to reuse the sum() method here, but kept getting error :(
 }
 
 module.exports = SortedList;
